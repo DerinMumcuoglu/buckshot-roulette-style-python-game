@@ -1,10 +1,13 @@
 import random
 
+TURN_ENEMY = 0
+TURN_PLAYER = 1
 ITEM_HAND_SAW = "Hand Saw"
 ITEM_HANDCUFFS = "Handcuffs"
 ITEM_MAGNIFYING_GLASS = "Magnifying Glass"
 ITEM_TAVUK_PILAV = "Tavuk Pilav"
-
+current_turn = TURN_PLAYER
+skip_turn = None
 bullets = []
 player_inventory = []
 enemy_inventory = []
@@ -50,6 +53,7 @@ loading_bullets()
 print(f"Empty count: {empty_count} Loaded count: {loaded_count}")
 
 def player_items_function():
+    global skip_turn
     global player_health
     global enemy_health
     
@@ -72,6 +76,9 @@ def player_items_function():
         if player_health < 3:
             player_health += 1
         print(player_health)
+    elif selected_item == ITEM_HANDCUFFS:
+        print("You used the handcuffs, enemy skips a turn.")
+        skip_turn = TURN_ENEMY
     
 
     if selected_item_index in range(0, len(player_inventory)):
@@ -119,10 +126,18 @@ def enemy_desicion():
     
 
 while player_health > 0 and enemy_health > 0:
-   
-    players_desicion()
-    if check_death() == True:
-        break
-    enemy_desicion()
-    if check_death():
-        break
+    if current_turn == TURN_PLAYER:
+        players_desicion()
+        if check_death() == True:
+            break
+        current_turn = TURN_ENEMY
+    elif current_turn == TURN_ENEMY:
+        enemy_desicion()
+        if check_death() == True:
+            break
+        current_turn = TURN_PLAYER
+
+    if skip_turn == TURN_ENEMY:
+        print("Enemy's turn is skipped!")
+        skip_turn = None
+        current_turn = TURN_PLAYER
