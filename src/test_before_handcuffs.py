@@ -10,8 +10,8 @@ player_inventory = []
 enemy_inventory = []
 items = [ITEM_HAND_SAW, ITEM_HANDCUFFS, ITEM_MAGNIFYING_GLASS, ITEM_TAVUK_PILAV]
 selected_item_index = -1
-player_health = 3
-enemy_health = 3
+player_health = 4
+enemy_health = 4
 
 def check_death():
         if enemy_health == 0:
