@@ -172,8 +172,22 @@ def enemy_desicion():
     global enemy_health
     reloading_bullets()
 
+    print("Its Enemy's turn!\n")
     r = random.randint(1,2)
     bullet = bullets.pop()
+
+    if not bullets:
+        if bullet == 1:
+            print("Enemy attacks! It's a hit.")
+            player_health -= bullet
+            return None
+            
+        else:
+            print("Enemy shoots itself! It was a blank cartidge.")
+            print("Its Enemy's turn again!\n")        
+            enemy_desicion()
+            return None
+       
     
     if r == 1 and bullet == 1:
         print("Enemy attacks! It's a hit.")
