@@ -6,12 +6,13 @@ ITEM_HAND_SAW = "Hand Saw"
 ITEM_HANDCUFFS = "Handcuffs"
 ITEM_MAGNIFYING_GLASS = "Magnifying Glass"
 ITEM_TAVUK_PILAV = "Tavuk Pilav"
+ITEM_BLOXY_COLA = "Bloxy Cola"
 current_turn = TURN_PLAYER
 skip_turn = None
 bullets = []
 player_inventory = []
 enemy_inventory = []
-items = [ITEM_HANDCUFFS, ITEM_HAND_SAW, ITEM_MAGNIFYING_GLASS, ITEM_TAVUK_PILAV]
+items = [ITEM_HANDCUFFS, ITEM_HAND_SAW, ITEM_MAGNIFYING_GLASS, ITEM_TAVUK_PILAV, ITEM_BLOXY_COLA]
 selected_item_index = -1
 player_health = 3
 enemy_health = 3
@@ -45,7 +46,7 @@ def loading_bullets():
     empty_count = 0
     loaded_count = 0
  
-    for i in range(0, random.randint(3,3)):
+    for i in range(0, random.randint(2,8)):
         c = random.randint(0,1)
         bullets.append(c)
         if c == 0:
@@ -112,6 +113,13 @@ def player_items_function():
         else:
             print("You ate the tavuk pilav... You are already max health. Nothing happens.")
         print("Player health: ", player_health)
+
+    elif selected_item == ITEM_BLOXY_COLA:
+        print("You drink the bloxy cola... It was so bloxy that the last bullet popped.")
+        if bullets.pop() == 1:
+            print("The popped bullet was... Live!")
+        else:
+            print("The popped bullet was... Blank!")
 
     elif selected_item == ITEM_HANDCUFFS:
         if not skip_turn == TURN_ENEMY:
