@@ -20,7 +20,7 @@ python -m pip install -r requirements.txt
 
 ## How to Play?
 
-**After installing the required libarys,** just clone this repository and run buckshot.py
+**After installing the required libarys,** just clone this repository and run "python src/buckshot.py"
 
 ## Shoutout
 
