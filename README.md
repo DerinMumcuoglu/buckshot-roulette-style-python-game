@@ -1,4 +1,4 @@
-<video src="https://github.com/user-attachments/assets/89fdeeed-9a44-4135-8e01-bc12111d1b2e" controls width="100%"></video>
+https://github.com/user-attachments/assets/89fdeeed-9a44-4135-8e01-bc12111d1b2e
 
 # Buckshot Roulette Style Python Game
 
